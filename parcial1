@@ -1,0 +1,38 @@
+def verificar_tesoro(mapa: list, x: int, y: int) -> int:
+
+    if mapa [x][y] == 1:
+        tesoro = 0
+
+    elif mapa [x][y] == 0:
+        distancia = [x - 1] + [y - 3]
+        tesoro = distancia
+
+
+    return tesoro
+
+mapa = [
+ [0, 0, 0, 0, 0],
+ [0, 0, 0, 1, 0],
+ [0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0],
+ [0, 0, 0, 0, 0] ]
+
+seguir = "s"
+
+while seguir == "s":
+
+    coordenadax = int(input("ingrese una coordenada para la fila: "))
+    while coordenadax < 0 or coordenadax > 4:
+        coordenadax = int(input("ERROR ingrese una coordenada para la fila (0 a 4): "))
+
+    coordenaday = int(input("ingrese una coordenada para la columna: "))
+    while coordenaday < 0 or coordenaday > 4:
+        coordenaday = int(input("ERROR ingrese una coordenada para la columna (0 a 4): "))
+
+
+    if verificar_tesoro (mapa, coordenadax, coordenaday) == 0:
+        print ("¡Encontraste el tesoro!")
+        seguir = "n"
+    else:
+        print (f"Fallaste. El tesoro está a {verificar_tesoro (mapa, coordenadax, coordenaday)} casilleros de distancia.")
+        seguir = input("¿desea continuar? (s/n): ")
